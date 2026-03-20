@@ -1,143 +1,103 @@
-// Script da Igreja CEIFA - Versão Premium
+// Script da Igreja CEIFA
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+
     const navbar = document.querySelector('.navbar');
-    
-    // Efeito de scrolling na navbar
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Navbar smooth scroll e menu mobile
-    const navLinks = document.querySelectorAll('.nav-links a');
     const hamburger = document.querySelector('.hamburger');
     const navLinksContainer = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
+    // ── Navbar scroll effect ──────────────────────────────
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Hamburger toggle ──────────────────────────────────
+    function openMenu() {
+        hamburger.classList.add('active');
+        navLinksContainer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navLinksContainer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.contains('active') ? closeMenu() : openMenu();
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    // ── Nav links: smooth scroll + close menu ─────────────
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href.startsWith('#')) {
                 e.preventDefault();
+                closeMenu();
                 const section = document.querySelector(href);
                 if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
+                    const offset = navbar.offsetHeight;
+                    const top = section.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
                 }
-                // Fechar menu mobile se estiver aberto
-                navLinksContainer?.classList.remove('active');
             }
         });
     });
 
-    // Hamburger menu toggle
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            navLinksContainer?.classList.toggle('active');
-        });
-    }
-
-    // Destaque do link ativo ao scrollar
-    window.addEventListener('scroll', updateActiveLink);
-
+    // ── Active link highlight on scroll ──────────────────
     function updateActiveLink() {
-        const scrollPosition = window.scrollY + 100;
-        const sections = document.querySelectorAll('section[id]');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.style.opacity = '0.6';
-                    if (link.getAttribute('href') === '#' + section.id) {
-                        link.style.opacity = '1';
-                    }
-                });
+        const scrollPosition = window.scrollY + navbar.offsetHeight + 10;
+        document.querySelectorAll('section[id]').forEach(section => {
+            const top    = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+            const link   = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+            if (link) {
+                link.style.opacity = (scrollPosition >= top && scrollPosition < bottom) ? '1' : '0.6';
             }
         });
     }
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
 
-    // Animação de cards ao entrar na viewport
-    const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
+    // ── Card entrance animation ───────────────────────────
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '0';
                 entry.target.style.transform = 'translateY(30px)';
-                
                 requestAnimationFrame(() => {
                     entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 });
-                
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    // Observar elementos
-    document.querySelectorAll('.culto-card, .pastor-card, .contato-card, .feature, .info-card').forEach(card => {
+    document.querySelectorAll('.culto-card, .pastor-card, .contato-card, .feature, .info-card, .celula-item').forEach(card => {
         observer.observe(card);
     });
 
-    // Efeito parallax no hero
-    window.addEventListener('scroll', () => {
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-        }
-    });
-
-    // Scroll Progress Bar
+    // ── Scroll progress bar ───────────────────────────────
     const progressBar = document.querySelector('.scroll-progress-bar');
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + '%';
-    });
-
-    // Contador de animação para números
-    function animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current);
-            }
-        }, 30);
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const scrollTop  = window.scrollY;
+            const docHeight  = document.body.scrollHeight - window.innerHeight;
+            progressBar.style.width = ((scrollTop / docHeight) * 100) + '%';
+        });
     }
 
-    // Iniciar contador quando chegar na seção
-    const statsElements = document.querySelectorAll('[data-count]');
-    statsElements.forEach(el => {
-        observer.observe(el);
-        el.addEventListener('observed', () => {
-            const target = parseInt(el.getAttribute('data-count'));
-            animateCounter(el, target);
-        }, { once: true });
-    });
-});
-
-// Sistema de localização de células
-document.addEventListener('DOMContentLoaded', function() {
-    // Sistema removido - agora mostra lista estática
 });
 
 // Console greeting
-console.log('%c🙏 Bem-vindo ao site da Igreja CEIFA!', 'font-size: 14px; color: #5469FF; font-weight: bold;');
-console.log('%cComunidade de Integração da Família - Uberaba, MG', 'font-size: 12px; color: #000000;');
-console.log('%cTelefone: Entre em contato via Instagram @igrejaceifa.uberaba', 'font-size: 11px; color: #64748b;');
+console.log('%c🙏 Bem-vindo ao site da Igreja CEIFA!', 'font-size:14px;color:#5469FF;font-weight:bold;');
+console.log('%cComunidade de Integração da Família — Uberaba, MG', 'font-size:12px;color:#000;');

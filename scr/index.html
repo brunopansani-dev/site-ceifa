@@ -22,14 +22,17 @@
                 <li><a href="#local"><i class="fas fa-map-marker-alt"></i> Local</a></li>
                 <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" aria-label="Menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
     </nav>
-    
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress">
         <div class="scroll-progress-bar"></div>
@@ -61,7 +64,6 @@
                 <h2>Sobre a CEIFA</h2>
                 <div class="underline"></div>
             </div>
-            
             <div class="about-content">
                 <div class="about-text">
                     <h3>Uma Comunidade Especial</h3>
@@ -84,7 +86,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="pastores-section">
                     <h3>Liderança Pastoral</h3>
                     <div class="pastores">
@@ -109,83 +110,50 @@
         <div class="container">
             <div class="section-header">
                 <h2>Programações</h2>
-                <div class="underline"></div> 
+                <div class="underline"></div>
             </div>
             <div class="cultos-grid">
                 <div class="culto-card">
-                    <div class="culto-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
+                    <div class="culto-icon"><i class="fas fa-sun"></i></div>
                     <h3>Domingos</h3>
                     <div class="culto-times">
-                        <div class="time">
-                            <span class="hour">10:00</span>
-                            <p>Culto</p>
-                        </div>
-                        <div class="time">
-                            <span class="hour">18:30</span>
-                            <p>Culto</p>
-                        </div>
+                        <div class="time"><span class="hour">10:00</span><p>Culto</p></div>
+                        <div class="time"><span class="hour">18:30</span><p>Culto</p></div>
                     </div>
                 </div>
                 <div class="culto-card">
-                    <div class="culto-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                    <div class="culto-icon"><i class="fas fa-book"></i></div>
                     <h3>Segundas-feiras</h3>
                     <div class="culto-times">
-                        <div class="time">
-                            <span class="hour">19:30</span>
-                            <p>Escola Bíblica</p>
-                        </div>
+                        <div class="time"><span class="hour">19:30</span><p>Escola Bíblica</p></div>
                     </div>
                 </div>
                 <div class="culto-card">
-                    <div class="culto-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                    <div class="culto-icon"><i class="fas fa-book"></i></div>
                     <h3>Terças-feiras</h3>
                     <div class="culto-times">
-                        <div class="time">
-                            <span class="hour">Células</span>
-                            <p>Horários disponíveis na aba "Células"</p>
-                        </div>
+                        <div class="time"><span class="hour">Células</span><p>Horários disponíveis na aba "Células"</p></div>
                     </div>
                 </div>
                 <div class="culto-card">
-                    <div class="culto-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                    <div class="culto-icon"><i class="fas fa-book"></i></div>
                     <h3>Quartas-feiras</h3>
                     <div class="culto-times">
-                        <div class="time">
-                            <span class="hour">19:30</span>
-                            <p>Culto</p>
-                        </div>
+                        <div class="time"><span class="hour">19:30</span><p>Culto</p></div>
                     </div>
                 </div>
                 <div class="culto-card">
-                    <div class="culto-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                    <div class="culto-icon"><i class="fas fa-book"></i></div>
                     <h3>Quintas-feiras</h3>
                     <div class="culto-times">
-                        <div class="time">
-                            <span class="hour">Células</span>
-                            <p>Horários disponíveis na aba "Células"</p>
-                        </div>
+                        <div class="time"><span class="hour">Células</span><p>Horários disponíveis na aba "Células"</p></div>
                     </div>
                 </div>
                 <div class="culto-card culto-special">
-                    <div class="culto-icon">
-                        <i class="fas fa-wine-glass"></i>
-                    </div>
+                    <div class="culto-icon"><i class="fas fa-wine-glass"></i></div>
                     <h3>1º Domingo do Mês</h3>
                     <div class="culto-times">
-                        <div class="time">
-                            <span class="hour">Especial</span>
-                            <p>Culto de Santa Ceia</p>
-                        </div>
+                        <div class="time"><span class="hour">Especial</span><p>Culto de Santa Ceia</p></div>
                     </div>
                 </div>
             </div>
@@ -200,78 +168,76 @@
                 <div class="underline"></div>
             </div>
             <div class="celulas-content">
-                <div class="celulas-left">
-                    <h3>Grupos de Células</h3>
-                    <p>As células são grupos pequenos de membros da igreja que se reúnem semanalmente para estudo da Bíblia, oração e comunhão. É um espaço para crescimento espiritual e fortalecimento de laços fraternais.</p>
-                    <div class="celulas-features">
-                        <div class="feature">
-                            <i class="fas fa-bible"></i>
-                            <h4>Estudo Bíblico</h4>
-                            <p>Aprofundamento na Palavra de Deus</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-praying-hands"></i>
-                            <h4>Oração</h4>
-                            <p>Intercessão e apoio mútuo</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <h4>Comunhão</h4>
-                            <p>Relacionamentos verdadeiros</p>
-                        </div>
-                    </div>
-                    
-                    <div class="celulas-list">
-                        <div class="celula-item">
-                            <h4>Semear</h4>
-                            <p>📍 Rua Topázio 574, Bairro Lourdes</p>
-                            <p>🕒 <strong>Quinta-feira</strong> às 20h</p>
-                        </div>
-                        
-                        <div class="celula-item">
-                            <h4>Renascer</h4>
-                            <p>📍 Av. Alzira de Oliveira Machado 239, Beija Flor 2</p>
-                            <p>🕒 <strong>Terça-feira</strong> às 19:30h</p>
-                        </div>
-                        
-                        <div class="celula-item">
-                            <h4>Kadosh</h4>
-                            <p>📍 Rua Miguel Pereira de Melo 127, Residencial Palmeiras</p>
-                            <p>🕒 <strong>Quinta-feira</strong> às 20h</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="celulas-right">
-                    <h3>Nossas Células</h3>
-                    <p>Participe das nossas células espalhadas pela cidade. Todas são bem-vindas!</p>
-                    
-                    <div class="celulas-list">
-                        <div class="celula-item">
-                            <h4>Reino</h4>
-                            <p>📍 Rua Antônio Perez Paleo 27, Volta Grande</p>
-                            <p>🕒 <strong>Terça-feira</strong> às 19:30h</p>
-                        </div>
-                        
-                        <div class="celula-item">
-                            <h4>HOPE</h4>
-                            <p>📍 Av. Guarapuava 603, Valim de Melo</p>
-                            <p>🕒 <strong>Quinta-feira</strong> às 20h</p>
-                        </div>
-                        
-                        <div class="celula-item">
-                            <h4>Peniel</h4>
-                            <p>📍 Rua Vinícius de Moraes 167, Bairro Universitário</p>
-                            <p>🕒 <strong>Quinta-feira</strong> às 19:30h</p>
-                        </div>
-                    </div>
-                    
-                    <a href="#contato" class="btn">Entre em Contato</a>
-                </div>
+    <div class="celulas-left">
+        <h3>Grupos de Células</h3>
+        <p>As células são grupos pequenos de membros da igreja que se reúnem semanalmente para estudo da Bíblia, oração e comunhão. É um espaço para crescimento espiritual e fortalecimento de laços fraternais.</p>
+        <div class="celulas-features">
+            <div class="feature">
+                <i class="fas fa-bible"></i>
+                <h4>Estudo Bíblico</h4>
+                <p>Aprofundamento na Palavra de Deus</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-praying-hands"></i>
+                <h4>Oração</h4>
+                <p>Intercessão e apoio mútuo</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h4>Comunhão</h4>
+                <p>Relacionamentos verdadeiros</p>
             </div>
         </div>
-    </section>
+    </div>
 
+    <div class="celulas-left">
+        <h3>Nossas Células</h3>
+        <p>Participe das nossas células espalhadas pela cidade!</p>
+    </div>
+
+    <div class="celulas-grupos">
+        <div class="celulas-col">
+            <div class="celula-item">
+                <h4>Renascer</h4>
+                <p>📍 Av. Alzira de Oliveira Machado 239, Beija Flor 2</p>
+                <p>🕒 <strong>Terça-feira</strong> às 19:30h</p>
+            </div>
+            <div class="celula-item">
+                <h4>Semear</h4>
+                <p>📍 Rua Topázio 574, Bairro Lourdes</p>
+                <p>🕒 <strong>Quinta-feira</strong> às 20h</p>
+            </div>
+            <div class="celula-item">
+                <h4>Kadosh</h4>
+                <p>📍 Rua Miguel Pereira de Melo 127, Residencial Palmeiras</p>
+                <p>🕒 <strong>Quinta-feira</strong> às 20h</p>
+            </div>
+        </div>
+        <div class="celulas-col">
+            <div class="celula-item">
+                <h4>Reino</h4>
+                <p>📍 Rua Antônio Perez Paleo 27, Volta Grande</p>
+                <p>🕒 <strong>Terça-feira</strong> às 19:30h</p>
+            </div>
+            <div class="celula-item">
+                <h4>HOPE</h4>
+                <p>📍 Av. Guarapuava 603, Valim de Melo</p>
+                <p>🕒 <strong>Quinta-feira</strong> às 20h</p>
+            </div>
+            <div class="celula-item">
+                <h4>Peniel</h4>
+                <p>📍 Rua Vinícius de Moraes 167, Bairro Universitário</p>
+                <p>🕒 <strong>Quinta-feira</strong> às 19:30h</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="celulas-btn-wrapper">
+        <a href="#contato" class="btn">Entre em Contato</a>
+    </div>
+</div>
+        </div>
+    </section>
 
     <!-- Localização -->
     <section id="local" class="localizacao">
@@ -307,18 +273,14 @@
             </div>
             <div class="contato-grid">
                 <div class="contato-card">
-                    <div class="contato-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
+                    <div class="contato-icon"><i class="fab fa-instagram"></i></div>
                     <h3>Instagram</h3>
                     <p>Acompanhe nossas atividades e novidades</p>
                     <p class="conta">@igrejaceifa.uberaba</p>
                     <a href="https://instagram.com/igrejaceifa.uberaba" target="_blank" class="btn">Seguir</a>
                 </div>
                 <div class="contato-card">
-                    <div class="contato-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
+                    <div class="contato-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <h3>Visite-nos</h3>
                     <p>Você é bem-vindo!</p>
                     <p class="conta">Rua Conceição das Alagoas, 1048<br>Uberaba - MG</p>
@@ -344,7 +306,6 @@
                         <li><a href="#local">Localização</a></li>
                     </ul>
                 </div>
-            </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Igreja CEIFA. Todos os direitos reservados.</p>
